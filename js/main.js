@@ -18,10 +18,22 @@ let team_white = new Player()
 let team_black = new Player()
 let game = new Game();
 
-let board_els = board.getBoardElements();
+let boardBlock = new BoardBlock;
+let boardEls = board.getBoardElements();
 
-board_els.forEach((el) => {
-    el.addEventListener('click',function() {
-        
+boardEls.forEach((el) => {
+    el.addEventListener('click',function(e) {
+        if(el.dataset.figure != 0 && el.dataset.team == game.getCurrentPlayer()) {
+            boardBlock.selectBlock(el.id)
+            
+            switch(game.getCurrentPlayer()) {
+                case 'w':
+                    team_white.showPossibleStepsForFigure(boardBlock, el.dataset.figure, el.dataset.team)
+                    break;
+                case 'b':
+                    team_black.showPossibleStepsForFigure(boardBlock, el.dataset.figure, el.dataset.team)
+                    break;
+            }
+        }
     });
 });

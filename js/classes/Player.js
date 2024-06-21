@@ -11,34 +11,19 @@ export class Player {
         this.score = 0
 
         this.figures = {
-            King: new King('K'),
-            Queen: new Queen('Q'),
+            King: new King(),
+            Queen: new Queen(),
+            Bishop: new Bishop(),
+            Rook: new Rook(),  
+            Knight: new Knight(),
+            Pawn: new Pawn()
+        }
+    }
 
-            Bishops: {
-                Bishop_1: new Bishop('B1'),
-                Bishop_2: new Bishop('B2')
-            },
-
-            Rooks: {
-                Rook_1: new Rook('R1'),
-                Rook_2: new Rook('R2'),
-            },
-
-            Knights: {
-                Knight_1: new Knight('Kn1'),
-                Knight_2: new Knight('Kn2'),
-            },
-
-            Pawns: {
-                Pawn_1: new Pawn('P1'),
-                Pawn_2: new Pawn('P2'),
-                Pawn_3: new Pawn('P3'),
-                Pawn_4: new Pawn('P4'),
-                Pawn_5: new Pawn('P5'),
-                Pawn_6: new Pawn('P6'),
-                Pawn_7: new Pawn('P7'),
-                Pawn_8: new Pawn('P8'),
-            }
+    showPossibleStepsForFigure(boardBlock, figure, team) {
+        switch(figure) {
+            case 'pawn':
+                this.figures.Pawn.showPossibleWays(boardBlock, team)
         }
     }
 }

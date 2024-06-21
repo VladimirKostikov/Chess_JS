@@ -60,6 +60,7 @@ html,body {
 .board-el {
     width: 108px;
     height: 108px;
+    border: 1px solid #FFF;
 }
 
 .board-row:nth-child(odd) > .board-el:nth-child(odd) {
@@ -76,6 +77,14 @@ html,body {
 
 .board-row:nth-child(even) > .board-el:nth-child(even) {
     background: #f3c455
+}
+
+.block-selected {
+    background: #FF0 !important;
+}
+
+.block-way {
+    background: green !important;
 }
 
 .board-el:hover {
