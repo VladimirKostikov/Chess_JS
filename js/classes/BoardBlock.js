@@ -7,6 +7,11 @@ export class BoardBlock {
     setFigure(figure, team) {
         switch(figure) {
             case 'pawn':
+            case 'bishop':
+            case 'rook':
+            case 'knight':
+            case 'king':
+            case 'queen':
                 this.setBoardBlockData(figure, team)
                 this.setBoardBlockHTMLFigure(figure, team)
                 break;
@@ -30,4 +35,5 @@ export class BoardBlock {
         
         el.innerHTML = Pieces[team][figure]
     }
+
 }

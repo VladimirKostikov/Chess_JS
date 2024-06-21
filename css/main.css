@@ -11,7 +11,7 @@ html,body {
 }
 
 .animated_bg {
-    background: linear-gradient(271deg, #54db95, #09b45b);
+    background: linear-gradient(271deg, #ecfafa, #fbfbfb);
     background-size: 400% 400%;
     position: fiexed;
     width: 100%;
@@ -63,19 +63,19 @@ html,body {
 }
 
 .board-row:nth-child(odd) > .board-el:nth-child(odd) {
-    background: #eaecd1
+    background: #f3c455
 }
 
 .board-row:nth-child(odd) > .board-el:nth-child(even) {
-    background: #779556
+    background: #a05e07
 }
 
 .board-row:nth-child(even) > .board-el:nth-child(odd) {
-    background: #779556
+    background: #a05e07
 }
 
 .board-row:nth-child(even) > .board-el:nth-child(even) {
-    background: #eaecd1
+    background: #f3c455
 }
 
 .board-el:hover {
