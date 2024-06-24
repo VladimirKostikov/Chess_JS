@@ -87,6 +87,10 @@ html,body {
     background: green !important;
 }
 
+.block-attack {
+    background: red !important;
+}
+
 .board-el:hover {
     opacity: 0.5;
     cursor: pointer;

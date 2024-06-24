@@ -6,6 +6,14 @@ export class BoardBlock {
         this.possibleWays = []
     }
 
+    removeFigureFromBlock() {
+        this.selected.dataset.figure = 0
+    }
+
+    removeTeamFromBlock() {
+        this.selected.dataset.team = 0
+    }
+
     setFigure(figure, team) {
         switch(figure) {
             case 'pawn':
@@ -51,18 +59,14 @@ export class BoardBlock {
         this.selected.classList.remove('block-selected')
     }
 
-    clearPossibleWays() {
-        this.getPossibleWays().forEach((el) => {
-            document.getElementById(el).classList.remove('block-way')
-        })
-    }
-
     setColorSelectedBlock() {
         this.selected.classList.add('block-selected');
     }
 
     addPossibleWay(item) {
-        this.possibleWays.push(item)
+        let block = document.getElementById(item);
+        if(block != null && block.dataset.team != this.selected.dataset.team)
+            this.possibleWays.push(item)
     }
 
     getPossibleWays() {
@@ -72,7 +76,21 @@ export class BoardBlock {
     showPossibleWays() {
         this.getPossibleWays().forEach((el) => {
             let block = document.getElementById(el)
-            block.classList.add('block-way')
+            if(block != null) {
+                block.classList.add('block-way')
+                if(block.dataset.team != this.selected.dataset.team && block.dataset.team != 0)
+                    block.classList.add('block-attack')
+            }
+        })
+    }
+
+    clearPossibleWays() {
+        this.getPossibleWays().forEach((el) => {
+            let block = document.getElementById(el);
+            if(block != null) {
+                block.classList.remove('block-attack')
+                block.classList.remove('block-way')
+            }
         })
     }
 
@@ -82,6 +100,17 @@ export class BoardBlock {
 
     getRowOfSelectedBlock() {
         return Number(this.selected.dataset.row)
+    }
+
+
+    makeMove(el) {
+        el.dataset.team = this.selected.dataset.team;
+        el.dataset.figure = this.selected.dataset.figure;
+        this.block = el.id;
+        this.setFigure(el.dataset.figure, el.dataset.team);
+
+        this.selected.innerHTML = '';
+        
     }
 
 }

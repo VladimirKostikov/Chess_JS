@@ -22,8 +22,19 @@ export class Player {
 
     showPossibleStepsForFigure(boardBlock, figure, team) {
         switch(figure) {
-            case 'pawn':
-                this.figures.Pawn.showPossibleWays(boardBlock, team)
+            case 'pawn': this.figures.Pawn.showPossibleWays(boardBlock, team); break;
+            case 'knight': this.figures.Knight.showPossibleWays(boardBlock); break;
         }
+    }
+
+    move(boardBlock, el) {
+        boardBlock.makeMove(el)
+        boardBlock.removeFigureFromBlock()
+        boardBlock.removeTeamFromBlock()
+        boardBlock.clearSelectedBlock()
+    }
+
+    attack(boardBlock, el) {
+
     }
 }

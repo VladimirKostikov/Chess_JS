@@ -1,3 +1,5 @@
 export class Rook {
-    
+    showPossibleWays() {
+        
+    }
 }
