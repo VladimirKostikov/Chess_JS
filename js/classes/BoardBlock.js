@@ -32,6 +32,13 @@ export class BoardBlock {
         }
     }
 
+    getTeamOfTheBlock(el) {
+        let block = document.getElementById(el)
+
+        if(block != null)
+            return block.dataset.team;
+    }
+
     setBoardBlockData(figure, team) {
         let el = document.getElementById(this.block)
         

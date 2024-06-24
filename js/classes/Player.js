@@ -24,6 +24,7 @@ export class Player {
         switch(figure) {
             case 'pawn': this.figures.Pawn.showPossibleWays(boardBlock, team); break;
             case 'knight': this.figures.Knight.showPossibleWays(boardBlock); break;
+            case 'rook': this.figures.Rook.showPossibleWays(boardBlock); break;
         }
     }
 
