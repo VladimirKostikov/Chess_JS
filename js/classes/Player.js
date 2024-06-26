@@ -25,6 +25,9 @@ export class Player {
             case 'pawn': this.figures.Pawn.showPossibleWays(boardBlock, team); break;
             case 'knight': this.figures.Knight.showPossibleWays(boardBlock); break;
             case 'rook': this.figures.Rook.showPossibleWays(boardBlock); break;
+            case 'bishop': this.figures.Bishop.showPossibleWays(boardBlock); break;
+            case 'queen': this.figures.Queen.showPossibleWays(boardBlock); break;
+            case 'king': this.figures.King.showPossibleWays(boardBlock); break;
         }
     }
 

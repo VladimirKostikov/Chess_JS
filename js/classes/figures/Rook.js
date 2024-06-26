@@ -8,56 +8,65 @@ export class Rook {
         boardBlock.showPossibleWays()
     }
 
-    getPossibleWaysInDirect(boardBlock, direction) {
+    showPossibleWays(boardBlock) {
         let row = boardBlock.getRowOfSelectedBlock()
         let col = boardBlock.getColOfSelectedBlock()
-        let curr_team = boardBlock.selected.dataset.team;
-        let i = 1;
-        let [step_row, step_col] = this.getStepForColsAndRows(direction);
 
-        while(i < 8) {
-            let el = `board_block_${row+step_row}_${col+step_col}`;
-
-            console.log(el)
-
-            if(boardBlock.getTeamOfTheBlock(el) == curr_team)
+        let i;
+        let el;
+        for(i=1; i<8; i++) {
+            el = `board_block_${row+i}_${col}`;
+            if(el != null && this.validateBlock(boardBlock, el)) {
+                boardBlock.addPossibleWay(el)
+                if(boardBlock.getTeamOfTheBlock(el) != 0)
+                    break
+            }
+            else
                 break;
-            
-            if(boardBlock.getTeamOfTheBlock(el) != curr_team && boardBlock.getTeamOfTheBlock(el) != 0) {
-                boardBlock.addPossibleWay(el);
-                break;
-            }
-
-            if(step_col < 0 && step_row == 0)
-                step_col -= 1;
-            
-            if(step_col > 0 && step_row == 0) {
-                step_col += 1;
-            }
-
-            if(step_row < 0 && step_col == 0)
-                step_row -= 1;
-
-            if(step_row > 0 && step_col == 0) {
-                step_row += 1;
-            }
-
-            boardBlock.addPossibleWay(el);
-            i++;
         }
 
+        for(i=1; i<8; i++) {
+            el = `board_block_${row}_${col+i}`;
+            if(el != null && this.validateBlock(boardBlock, el)) {
+                boardBlock.addPossibleWay(el)
+                if(boardBlock.getTeamOfTheBlock(el) != 0)
+                    break
+            }
+            else
+                break;
+        }
+        
+        for(i=1; i<8; i++) {
+            el = `board_block_${row-i}_${col}`;
+            if(el != null && this.validateBlock(boardBlock, el)) {
+                boardBlock.addPossibleWay(el)
+                if(boardBlock.getTeamOfTheBlock(el) != 0)
+                    break
+            }
+            else
+                break;
+        }
+        
+        for(i=1; i<8; i++) {
+            el = `board_block_${row}_${col-i}`;
+            if(el != null && this.validateBlock(boardBlock, el)) {
+                boardBlock.addPossibleWay(el)
+                if(boardBlock.getTeamOfTheBlock(el) != 0)
+                    break
+            }
+            else
+                break;
+        }
+           
+        
+        boardBlock.showPossibleWays()
     }
 
-    getStepForColsAndRows(direction) {
-        switch(direction) {
-            case 'up':
-                return [-1, 0];
-            case 'down':
-                return [1, 0];
-            case 'right':
-                return [0, 1];
-            case 'left':
-                return [0, -1];
-        }
+    validateBlock(boardBlock, el) {
+        let curr_team = boardBlock.selected.dataset.team;
+        if(boardBlock.getTeamOfTheBlock(el) == curr_team)
+            return false;
+
+        return true;
     }
 }
